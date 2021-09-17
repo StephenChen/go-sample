@@ -1,0 +1,40 @@
+package httptest
+
+import (
+	"bytes"
+	"encoding/json"
+	"io/ioutil"
+	"net/http"
+)
+
+// ReqParam API 请求参数
+type ReqParam struct {
+	X int `json:"x"`
+}
+
+// Result API 返回结果
+type Result struct {
+	Value int `json:"value"`
+}
+
+func GetResultByAPI(x, y int) int {
+	p := &ReqParam{X: x}
+	b, _ := json.Marshal(p)
+
+	// 调用其他服务的 API
+	resp, err := http.Post(
+		"http://your-api.com/post",
+		"application/json",
+		bytes.NewBuffer(b),
+	)
+	if err != nil {
+		return -1
+	}
+	body, _ := ioutil.ReadAll(resp.Body)
+	var ret Result
+	if err := json.Unmarshal(body, &ret); err != nil {
+		return -1
+	}
+	// 这里是对 API 返回的数据做一些逻辑处理
+	return ret.Value + y
+}
