@@ -1,4 +1,4 @@
-package httptest
+package http
 
 import (
 	"encoding/json"
