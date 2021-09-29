@@ -1,0 +1,4 @@
+- base: 表格驱动测试、回归测试、断言工具 `testify/assert`
+- http: `httptest` 和 `gockl`
+- database: `go-sqlmock` 和 `miniredis`
+- interface: `gomock` mock 相关接口 和 `gostub` 对全局变量进行打桩
