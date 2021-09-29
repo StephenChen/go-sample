@@ -2,3 +2,6 @@
 - http: `httptest` 和 `gockl`
 - database: `go-sqlmock` 和 `miniredis`
 - interface: `gomock` mock 相关接口 和 `gostub` 对全局变量进行打桩
+- monkey
+    - 不支持内联函数，须通过 `-gcflags=-l` 关闭内联优化
+    - 不是线程安全，不要用在并发的单元测试中
