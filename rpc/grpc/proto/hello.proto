@@ -1,0 +1,54 @@
+syntax = "proto3";
+
+package proto;
+
+option go_package = ".;proto";
+
+import "github.com/mwitkow/go-proto-validators@v0.3.2/validator.proto";
+import "github.com/grpc-ecosystem/grpc-gateway@v1.16.0/third_party/googleapis/google/api/annotations.proto";
+
+message String{
+  string value = 1;
+}
+
+message Message {
+  string important_string = 1 [
+    (validator.field) = {regex:"^[a-z]{2,5}$"}
+  ];
+  int32 age = 2[
+    (validator.field) = {int_gt:0, int_lt:100}
+  ];
+}
+
+service HelloService {
+  rpc Hello (String) returns (String);
+  rpc Channel (stream String) returns (stream String);
+}
+
+service PubsubService {
+  rpc Publish (String) returns (String);
+  rpc Subscribe (String) returns (stream String);
+}
+
+service RestService {
+  rpc Get(String) returns (String) {
+    option (google.api.http) = {
+      get: "/get/{value}"
+    };
+  }
+  rpc Post(String) returns (String) {
+    option (google.api.http) = {
+      post: "/post"
+      body: "*"
+    };
+  }
+}
+
+//protoc \
+//--proto_path=/Users/chenxinyuan/go/pkg/mod \
+//--proto_path=/Users/chenxinyuan/go/pkg/mod/github.com/mwitkow/go-proto-validators@v0.3.2 \
+//--proto_path=/Users/chenxinyuan/go/pkg/mod/github.com/grpc-ecosystem/grpc-gateway@v1.16.0/third_party/googleapis \
+//--proto_path=/Users/chenxinyuan/Library/Caches/JetBrains/GoLand2021.3/protoeditor \
+//--proto_path=. \
+//--go_out=. --go-grpc_out=. --govalidators_out=. --grpc-gateway_out=. --swagger_out=. \
+//hello.proto
