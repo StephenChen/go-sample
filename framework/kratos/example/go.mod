@@ -3,10 +3,12 @@ module kratos_example
 go 1.17
 
 require (
+	github.com/gin-gonic/gin v1.7.2
 	github.com/go-kratos/gin v0.1.0
 	github.com/go-kratos/kratos/contrib/config/apollo/v2 v2.0.0-20211020140339-52876d3e2073
 	github.com/go-kratos/kratos/contrib/registry/etcd/v2 v2.0.0-20211026064307-ef686a1cc7c8
 	github.com/go-kratos/kratos/v2 v2.1.1
+	github.com/gorilla/mux v1.8.0
 	go.etcd.io/etcd/client/v3 v3.5.1
 	google.golang.org/genproto v0.0.0-20211026145609-4688e4c4e024
 	google.golang.org/grpc v1.40.0
@@ -19,7 +21,6 @@ require (
 	github.com/coreos/go-systemd/v22 v22.3.2 // indirect
 	github.com/fsnotify/fsnotify v1.4.9 // indirect
 	github.com/gin-contrib/sse v0.1.0 // indirect
-	github.com/gin-gonic/gin v1.7.2 // indirect
 	github.com/go-playground/form/v4 v4.2.0 // indirect
 	github.com/go-playground/locales v0.13.0 // indirect
 	github.com/go-playground/universal-translator v0.17.0 // indirect
@@ -27,7 +28,6 @@ require (
 	github.com/gogo/protobuf v1.3.2 // indirect
 	github.com/golang/protobuf v1.5.2 // indirect
 	github.com/google/uuid v1.3.0 // indirect
-	github.com/gorilla/mux v1.8.0 // indirect
 	github.com/hashicorp/hcl v1.0.0 // indirect
 	github.com/imdario/mergo v0.3.12 // indirect
 	github.com/json-iterator/go v1.1.11 // indirect
