@@ -52,4 +52,5 @@ func Colly() {
 	if err != nil {
 		fmt.Println(err)
 	}
+
 }
