@@ -1,1 +1,5 @@
 package crawler
+
+func Nats() {
+
+}
