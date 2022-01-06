@@ -15,4 +15,5 @@ func main() {
 	lock.TryLock()
 
 	loadbalance.LoadBalance()
+
 }
